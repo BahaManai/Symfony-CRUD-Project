@@ -3,6 +3,7 @@
 {% block title %}Liste des livres{% endblock %}
 
 {% block body %}
+    <h2 class="text-center">Liste des livres</h2>
     <table class="table table-striped">
         <tr>
             <th>ID</th>
@@ -10,6 +11,7 @@
             <th>Editeur</th>
             <th>Date d'édition</th>
             <th>Prix</th>
+            <th>Actions</th>
         </tr>
         {% for livre in livres %}
             <tr>
@@ -18,7 +20,11 @@
                 <td>{{ livre.editeur }}</td>
                 <td>{{ livre.dateEdition|date('Y-m-d') }}</td>
                 <td>{{ livre.prix }}</td>
-                <td><a href="{{ path('app_livres_show', {'id': livre.id}) }}">Consulter</a></td>
+                <td>
+                    <a href="{{ path('app_livres_show', {'id': livre.id}) }}" class="btn btn-primary btn-sm">Voir détails</a>
+                    <a href="{{ path('app_livres_update', {'id': livre.id}) }}" class="btn btn-warning btn-sm">Augmenter Prix</a>
+                    <a href="{{ path('app_livres_delete', {'id': livre.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
             </tr>
         {% endfor %}
     </table>

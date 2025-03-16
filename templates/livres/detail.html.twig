@@ -1,11 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ livre.titre }}</h1>
-    <p>Editeur: {{ livre.editeur }}</p>
-    <p>Date d'édition: {{ livre.dateEdition|date('Y-m-d') }}</p>
-    <p>Prix: {{ livre.prix }}</p>
-    <p>ISBN: {{ livre.isbn }}</p>
-    <p>Resume: {{ livre.resume }}</p>
-    <p>Image: <img src="{{ livre.image }}" alt="{{ livre.titre }}" width="200"></p>
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Détail du livre {{ livre.id }}</h2>
+
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="{{ livre.image }}" alt="{{ livre.titre }}" class="img-fluid rounded shadow">
+            </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ livre.titre }}</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Éditeur :</strong> {{ livre.editeur }}</li>
+                            <li class="list-group-item"><strong>Date d'édition :</strong> {{ livre.dateEdition|date('d/m/Y') }}</li>
+                            <li class="list-group-item"><strong>Prix :</strong> {{ livre.prix }} €</li>
+                            <li class="list-group-item"><strong>ISBN :</strong> {{ livre.isbn }}</li>
+                            <li class="list-group-item"><strong>Résumé :</strong> {{ livre.resume }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
